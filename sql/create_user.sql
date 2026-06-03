@@ -7,6 +7,12 @@
 
 SET SERVEROUTPUT ON;
 
+-- Si se ejecuta como SYSDBA sin indicar servicio, Oracle entra al contenedor raiz.
+-- El proyecto usa XEPDB1, por eso cambiamos de contenedor antes de crear el usuario.
+WHENEVER SQLERROR CONTINUE;
+ALTER SESSION SET CONTAINER = XEPDB1;
+WHENEVER SQLERROR EXIT SQL.SQLCODE;
+
 DECLARE
   v_count NUMBER;
 BEGIN

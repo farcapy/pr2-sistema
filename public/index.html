@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema Web Control Equipos</title>
+  <link rel="icon" type="image/png" href="img/logo-columbia-recortado.png">
+  <link rel="apple-touch-icon" href="img/logo-columbia-recortado.png">
   <link rel="stylesheet" href="css/styles.css">
   <script src="vendor/chartjs/chart.umd.js"></script>
 </head>
 <body>
   <main id="loginView" class="login">
     <section class="login-panel">
-      <h1>Control de Equipos</h1>
+      <div class="login-brand">
+        <img src="img/logo-columbia-recortado.png" alt="Universidad Columbia">
+        <div>
+          <h1>Control de Equipos</h1>
+          <p>Universidad Columbia</p>
+        </div>
+      </div>
       <form id="loginForm" class="form">
         <label>Usuario
           <input type="text" name="usuario" required minlength="3" autocomplete="username">
@@ -26,9 +34,12 @@
 
   <main id="appView" class="app hidden">
     <header class="topbar">
-      <div>
-        <h1>Control de Prestamos de Equipos</h1>
-        <p id="userInfo"></p>
+      <div class="topbar-brand">
+        <img src="img/logo-columbia-recortado.png" alt="Universidad Columbia">
+        <div>
+          <h1>Control de Prestamos de Equipos</h1>
+          <p id="userInfo"></p>
+        </div>
       </div>
       <button id="logoutBtn" class="secondary" type="button">Salir</button>
     </header>

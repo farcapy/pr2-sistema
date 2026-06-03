@@ -76,6 +76,28 @@ button.danger {
   padding: 28px;
 }
 
+.login-brand,
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.login-brand {
+  margin-bottom: 20px;
+}
+
+.login-brand img {
+  width: 82px;
+  max-height: 82px;
+  object-fit: contain;
+}
+
+.login-brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
 .app {
   min-height: 100vh;
 }
@@ -108,6 +130,12 @@ h2 {
 .topbar p {
   margin: 4px 0 0;
   color: #d5dee6;
+}
+
+.topbar-brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
 }
 
 .tabs {
@@ -302,6 +330,15 @@ th {
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .topbar-brand {
+    align-items: flex-start;
+  }
+
+  .login-brand img {
+    width: 68px;
+    max-height: 68px;
   }
 
   .tab-panel,

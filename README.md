@@ -160,6 +160,7 @@ Password web: admin123
 Gestion_Equipos/
   public/
     css/styles.css
+    img/logo-columbia-recortado.png
     js/app.js
     index.html
   sql/
