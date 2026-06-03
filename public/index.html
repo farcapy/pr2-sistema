@@ -1,17 +1,28 @@
 <!DOCTYPE html>
+<!-- Documento HTML principal servido por Express desde la carpeta public. -->
 <html lang="es">
 <head>
+  <!-- Define codificacion UTF-8 para soportar caracteres en espanol. -->
   <meta charset="UTF-8">
+  <!-- Hace que el sitio sea responsive en celulares y pantallas pequenas. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titulo mostrado en la pestana del navegador. -->
   <title>Sistema Web Control Equipos</title>
+  <!-- Favicon del sistema con el logo institucional. -->
   <link rel="icon" type="image/png" href="img/logo-columbia-recortado.png">
+  <!-- Icono usado por dispositivos Apple si se guarda como acceso directo. -->
   <link rel="apple-touch-icon" href="img/logo-columbia-recortado.png">
+  <!-- Hoja de estilos principal. -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js servido localmente desde node_modules por Express. -->
   <script src="vendor/chartjs/chart.umd.js"></script>
 </head>
 <body>
+  <!-- Vista de login; se oculta despues de iniciar sesion correctamente. -->
   <main id="loginView" class="login">
+    <!-- Panel central del login. -->
     <section class="login-panel">
+      <!-- Marca institucional y nombre del sistema. -->
       <div class="login-brand">
         <img src="img/logo-columbia-recortado.png" alt="Universidad Columbia">
         <div>
@@ -19,6 +30,7 @@
           <p>Universidad Columbia</p>
         </div>
       </div>
+      <!-- Formulario de autenticacion enviado por JavaScript con fetch(). -->
       <form id="loginForm" class="form">
         <label>Usuario
           <input type="text" name="usuario" required minlength="3" autocomplete="username">
@@ -28,11 +40,14 @@
         </label>
         <button type="submit">Ingresar</button>
       </form>
+      <!-- Mensaje de error del login. -->
       <p id="loginMsg" class="msg"></p>
     </section>
   </main>
 
+  <!-- Vista principal de la aplicacion; inicia oculta hasta autenticar. -->
   <main id="appView" class="app hidden">
+    <!-- Barra superior con logo, titulo, usuario y boton salir. -->
     <header class="topbar">
       <div class="topbar-brand">
         <img src="img/logo-columbia-recortado.png" alt="Universidad Columbia">
@@ -44,6 +59,7 @@
       <button id="logoutBtn" class="secondary" type="button">Salir</button>
     </header>
 
+    <!-- Navegacion por pestanas de los modulos del sistema. -->
     <nav class="tabs" aria-label="Secciones">
       <button class="tab active" data-tab="equipos">Equipos</button>
       <button class="tab" data-tab="personas">Personas</button>
@@ -52,8 +68,10 @@
       <button class="tab" data-tab="graficos">Graficos</button>
     </nav>
 
+    <!-- Modulo Equipos: CRUD principal obligatorio. -->
     <section id="equipos" class="tab-panel active">
       <div class="grid two">
+        <!-- Formulario para crear o editar equipos. -->
         <form id="equipoForm" class="panel form">
           <h2>Equipo</h2>
           <input type="hidden" name="id_equipo">
@@ -85,6 +103,7 @@
           </div>
         </form>
 
+        <!-- Tabla de equipos con busqueda, filtros y acciones. -->
         <section class="panel">
           <div class="table-head">
             <h2>Listado</h2>
@@ -112,8 +131,10 @@
       </div>
     </section>
 
+    <!-- Modulo Personas: registra solicitantes de prestamos. -->
     <section id="personas" class="tab-panel">
       <div class="grid two">
+        <!-- Formulario para registrar personas. -->
         <form id="personaForm" class="panel form">
           <h2>Persona</h2>
           <label>Nombre
@@ -137,6 +158,7 @@
           </label>
           <button type="submit">Guardar persona</button>
         </form>
+        <!-- Listado de personas registradas. -->
         <section class="panel">
           <h2>Personas registradas</h2>
           <div class="table-wrap">
@@ -149,8 +171,10 @@
       </div>
     </section>
 
+    <!-- Modulo Prestamos: registra prestamos y devoluciones. -->
     <section id="prestamos" class="tab-panel">
       <div class="grid two">
+        <!-- Formulario para registrar un nuevo prestamo. -->
         <form id="prestamoForm" class="panel form">
           <h2>Prestamo</h2>
           <label>Equipo disponible
@@ -167,6 +191,7 @@
           </label>
           <button type="submit">Registrar prestamo</button>
         </form>
+        <!-- Tabla de prestamos con boton Devolver para prestamos activos. -->
         <section class="panel">
           <h2>Prestamos</h2>
           <div class="table-wrap">
@@ -181,6 +206,7 @@
       </div>
     </section>
 
+    <!-- Modulo Reportes: tablas dinamicas consultadas desde Oracle. -->
     <section id="reportes" class="tab-panel">
       <div class="grid three">
         <section class="panel">
@@ -199,6 +225,7 @@
       </div>
     </section>
 
+    <!-- Modulo Graficos: estadisticas dinamicas con Chart.js. -->
     <section id="graficos" class="tab-panel">
       <div class="grid three">
         <section class="panel chart-panel"><h2>Equipos por estado</h2><canvas id="chartEstado"></canvas></section>
@@ -207,9 +234,11 @@
       </div>
     </section>
 
+    <!-- Toast usado para mensajes temporales de exito o error. -->
     <p id="appMsg" class="toast hidden"></p>
   </main>
 
+  <!-- JavaScript principal del frontend. -->
   <script src="js/app.js"></script>
 </body>
 </html>

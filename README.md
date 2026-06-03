@@ -154,6 +154,49 @@ Password web: admin123
 - Reportes de prestamos activos, vencidos e historial por persona.
 - Graficos dinamicos con Chart.js.
 
+## Funcionamiento Del Sistema
+
+1. El usuario abre `http://localhost:3000`.
+2. Inicia sesion con un usuario existente en la tabla `USUARIOS`.
+3. El sistema carga categorias, equipos, personas, prestamos, reportes y graficos desde Oracle.
+4. En el modulo `Equipos` se puede crear, editar, eliminar, listar y filtrar equipos.
+5. En el modulo `Personas` se registran solicitantes de prestamos.
+6. En el modulo `Prestamos` se registra el prestamo de un equipo disponible.
+7. Al prestar un equipo, el backend cambia su estado a `PRESTADO`.
+8. Al devolver un equipo, el backend cambia su estado a `DISPONIBLE`.
+9. Los reportes y graficos muestran informacion real obtenida desde Oracle.
+
+## Cumplimiento Del Enunciado
+
+| Requisito | Cumple | Evidencia |
+| --- | --- | --- |
+| Frontend con HTML5, CSS3 y JavaScript | Si | `public/index.html`, `public/css/styles.css`, `public/js/app.js` |
+| Backend con Node.js y Express | Si | `src/server.js`, `src/app.js`, `src/routes/` |
+| Oracle Database XE local usando XEPDB1 | Si | `.env.example`, `sql/create_user.sql`, `sql/schema.sql` |
+| Conexion Oracle con `oracledb` Thin y pool | Si | `src/config/database.js` |
+| Login funcional contra base de datos | Si | `POST /api/login` consulta `USUARIOS` |
+| CRUD completo de entidad principal | Si | CRUD completo de `EQUIPOS` |
+| Minimo 3 tablas relacionadas | Si | `CATEGORIAS_EQUIPO`, `EQUIPOS`, `PERSONAS`, `PRESTAMOS` |
+| Servicios web REST | Si | Rutas `/api/...` |
+| Consumo de API con `fetch()` | Si | Funcion `api()` en `public/js/app.js` |
+| Validaciones HTML5 y backend | Si | Formularios HTML y middleware `requireFields` |
+| JavaScript moderno | Si | `const`, `let`, funciones reutilizables, `async/await` |
+| Reportes con datos reales desde Oracle | Si | Modulo `Reportes` |
+| Graficos dinamicos con Chart.js | Si | Modulo `Graficos` |
+| Ejecutar con `npm run dev` | Si | Script en `package.json` |
+
+La documentacion completa del funcionamiento y cumplimiento esta en:
+
+```text
+DOCUMENTACION_SISTEMA.md
+```
+
+La guia para explicar el codigo durante la defensa esta en:
+
+```text
+GUIA_EXPLICACION_CODIGO.md
+```
+
 ## Estructura
 
 ```text
@@ -170,6 +213,9 @@ Gestion_Equipos/
     fix_user_login.sql
     README_SQL.md
     schema.sql
+  DOCUMENTACION_SISTEMA.md
+  GUIA_EXPLICACION_CODIGO.md
+  MIGRACION.md
   src/
     config/database.js
     middlewares/validate.js
