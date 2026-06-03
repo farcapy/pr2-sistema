@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Web Control Equipos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="vendor/chartjs/chart.umd.js"></script>
+</head>
+<body>
+  <main id="loginView" class="login">
+    <section class="login-panel">
+      <h1>Control de Equipos</h1>
+      <form id="loginForm" class="form">
+        <label>Usuario
+          <input type="text" name="usuario" required minlength="3" autocomplete="username">
+        </label>
+        <label>Password
+          <input type="password" name="password" required minlength="4" autocomplete="current-password">
+        </label>
+        <button type="submit">Ingresar</button>
+      </form>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+  </main>
+
+  <main id="appView" class="app hidden">
+    <header class="topbar">
+      <div>
+        <h1>Control de Prestamos de Equipos</h1>
+        <p id="userInfo"></p>
+      </div>
+      <button id="logoutBtn" class="secondary" type="button">Salir</button>
+    </header>
+
+    <nav class="tabs" aria-label="Secciones">
+      <button class="tab active" data-tab="equipos">Equipos</button>
+      <button class="tab" data-tab="personas">Personas</button>
+      <button class="tab" data-tab="prestamos">Prestamos</button>
+      <button class="tab" data-tab="reportes">Reportes</button>
+      <button class="tab" data-tab="graficos">Graficos</button>
+    </nav>
+
+    <section id="equipos" class="tab-panel active">
+      <div class="grid two">
+        <form id="equipoForm" class="panel form">
+          <h2>Equipo</h2>
+          <input type="hidden" name="id_equipo">
+          <label>Nombre
+            <input type="text" name="nombre_equipo" required maxlength="100">
+          </label>
+          <label>Marca
+            <input type="text" name="marca" required maxlength="80">
+          </label>
+          <label>Modelo
+            <input type="text" name="modelo" maxlength="80">
+          </label>
+          <label>Nro. serie
+            <input type="text" name="nro_serie" required maxlength="80">
+          </label>
+          <label>Estado
+            <select name="estado" required>
+              <option value="DISPONIBLE">DISPONIBLE</option>
+              <option value="PRESTADO">PRESTADO</option>
+              <option value="MANTENIMIENTO">MANTENIMIENTO</option>
+            </select>
+          </label>
+          <label>Categoria
+            <select name="id_categoria" id="equipoCategoria" required></select>
+          </label>
+          <div class="actions">
+            <button type="submit">Guardar</button>
+            <button type="button" id="cancelEquipo" class="secondary">Nuevo</button>
+          </div>
+        </form>
+
+        <section class="panel">
+          <div class="table-head">
+            <h2>Listado</h2>
+            <div class="filters">
+              <input id="buscarEquipo" type="search" placeholder="Buscar equipo">
+              <select id="filtroEstado">
+                <option value="">Todos</option>
+                <option value="DISPONIBLE">Disponibles</option>
+                <option value="PRESTADO">Prestados</option>
+                <option value="MANTENIMIENTO">Mantenimiento</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Equipo</th><th>Marca</th><th>Serie</th><th>Estado</th><th>Categoria</th><th></th>
+                </tr>
+              </thead>
+              <tbody id="equiposBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="personas" class="tab-panel">
+      <div class="grid two">
+        <form id="personaForm" class="panel form">
+          <h2>Persona</h2>
+          <label>Nombre
+            <input type="text" name="nombre" required maxlength="80">
+          </label>
+          <label>Apellido
+            <input type="text" name="apellido" required maxlength="80">
+          </label>
+          <label>Documento
+            <input type="text" name="documento" required maxlength="30">
+          </label>
+          <label>Tipo
+            <select name="tipo_persona" required>
+              <option value="ESTUDIANTE">ESTUDIANTE</option>
+              <option value="DOCENTE">DOCENTE</option>
+              <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+            </select>
+          </label>
+          <label>Telefono
+            <input type="tel" name="telefono" maxlength="30">
+          </label>
+          <button type="submit">Guardar persona</button>
+        </form>
+        <section class="panel">
+          <h2>Personas registradas</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Nombre</th><th>Documento</th><th>Tipo</th><th>Telefono</th></tr></thead>
+              <tbody id="personasBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="prestamos" class="tab-panel">
+      <div class="grid two">
+        <form id="prestamoForm" class="panel form">
+          <h2>Prestamo</h2>
+          <label>Equipo disponible
+            <select name="id_equipo" id="prestamoEquipo" required></select>
+          </label>
+          <label>Persona
+            <select name="id_persona" id="prestamoPersona" required></select>
+          </label>
+          <label>Fecha estimada de devolucion
+            <input type="date" name="fecha_devolucion_estimada" required>
+          </label>
+          <label>Observacion
+            <textarea name="observacion" maxlength="300" rows="3"></textarea>
+          </label>
+          <button type="submit">Registrar prestamo</button>
+        </form>
+        <section class="panel">
+          <h2>Prestamos</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Equipo</th><th>Persona</th><th>Estimada</th><th>Estado</th><th></th></tr>
+              </thead>
+              <tbody id="prestamosBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="reportes" class="tab-panel">
+      <div class="grid three">
+        <section class="panel">
+          <h2>Activos</h2>
+          <div class="table-wrap mini"><table><tbody id="activosBody"></tbody></table></div>
+        </section>
+        <section class="panel">
+          <h2>Vencidos</h2>
+          <div class="table-wrap mini"><table><tbody id="vencidosBody"></tbody></table></div>
+        </section>
+        <section class="panel">
+          <h2>Historial por persona</h2>
+          <select id="historialPersona"></select>
+          <div class="table-wrap mini"><table><tbody id="historialBody"></tbody></table></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="graficos" class="tab-panel">
+      <div class="grid three">
+        <section class="panel chart-panel"><h2>Equipos por estado</h2><canvas id="chartEstado"></canvas></section>
+        <section class="panel chart-panel"><h2>Prestamos por mes</h2><canvas id="chartMes"></canvas></section>
+        <section class="panel chart-panel"><h2>Equipos por categoria</h2><canvas id="chartCategoria"></canvas></section>
+      </div>
+    </section>
+
+    <p id="appMsg" class="toast hidden"></p>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

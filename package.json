@@ -1,0 +1,20 @@
+{
+  "name": "gestion-equipos",
+  "version": "1.0.0",
+  "description": "Sistema Web de Control de Prestamos de Equipos",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "oracledb": "^6.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
