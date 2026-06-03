@@ -2,7 +2,7 @@
 
 Esta guia sirve para llevar el proyecto desde una computadora personal a la maquina de la universidad usando GitHub.
 
-## 1. En La Computadora Personal
+## 1. En local
 
 Subir el proyecto a GitHub:
 
@@ -23,7 +23,7 @@ node_modules/
 *.log
 ```
 
-## 2. En La Computadora De La Universidad
+## 2. En la notebook de la universidad
 
 Clonar el proyecto:
 

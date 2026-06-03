@@ -259,6 +259,13 @@ async function loadGraficos() {
   drawChart('chartCategoria', 'bar', categorias, 'Equipos');
 }
 
+// Limpia el formulario de equipos y asegura que salga del modo edicion.
+function resetEquipoForm() {
+  const form = $('#equipoForm');
+  form.reset();
+  form.id_equipo.value = '';
+}
+
 // Refresca todos los datos principales despues de una operacion.
 async function refreshAll() {
   // Categorias y personas no dependen entre si, por eso cargan en paralelo.
@@ -365,7 +372,7 @@ $('#equipoForm').addEventListener('submit', async (event) => {
   // Convierte formulario a objeto.
   const data = formData(event.target);
   // Lee id oculto para saber si crea o edita.
-  const id = data.id_equipo;
+  const id = String(data.id_equipo || '').trim();
   // El id no debe enviarse en el body porque va en la URL para editar.
   delete data.id_equipo;
 
@@ -376,7 +383,7 @@ $('#equipoForm').addEventListener('submit', async (event) => {
       body: JSON.stringify(data)
     });
     // Limpia formulario.
-    event.target.reset();
+    resetEquipoForm();
     // Muestra mensaje segun operacion.
     notify(id ? 'Equipo actualizado' : 'Equipo registrado');
     // Recarga datos.
@@ -388,7 +395,7 @@ $('#equipoForm').addEventListener('submit', async (event) => {
 });
 
 // Boton Nuevo limpia el formulario de equipos.
-$('#cancelEquipo').addEventListener('click', () => $('#equipoForm').reset());
+$('#cancelEquipo').addEventListener('click', resetEquipoForm);
 // Al escribir en busqueda, recarga equipos filtrados.
 $('#buscarEquipo').addEventListener('input', loadEquipos);
 // Al cambiar estado, recarga equipos filtrados.
