@@ -87,6 +87,13 @@ async function loadCategorias() {
   state.categorias = await api('/categorias');
   // Llena el select de categorias usado en el formulario de equipos.
   fillSelect($('#equipoCategoria'), state.categorias, 'id_categoria', (c) => c.nombre_categoria);
+  // Renderiza tabla de categorias para que el usuario vea las existentes.
+  $('#categoriasBody').innerHTML = state.categorias.map((categoria) => `
+    <tr>
+      <td>${categoria.nombre_categoria}</td>
+      <td>${categoria.descripcion || ''}</td>
+    </tr>
+  `).join('');
 }
 
 // Carga equipos desde el backend aplicando filtros.
@@ -419,6 +426,28 @@ $('#personaForm').addEventListener('submit', async (event) => {
     await refreshAll();
   } catch (error) {
     // Muestra error.
+    notify(error.message);
+  }
+});
+
+// Evento submit del formulario de categorias.
+$('#categoriaForm').addEventListener('submit', async (event) => {
+  // Evita recarga de pagina.
+  event.preventDefault();
+  try {
+    // Envia nueva categoria al backend.
+    await api('/categorias', {
+      method: 'POST',
+      body: JSON.stringify(formData(event.target))
+    });
+    // Limpia formulario.
+    event.target.reset();
+    // Muestra confirmacion.
+    notify('Categoria registrada');
+    // Recarga todo porque la categoria afecta selects y graficos.
+    await refreshAll();
+  } catch (error) {
+    // Muestra mensaje de error del backend.
     notify(error.message);
   }
 });

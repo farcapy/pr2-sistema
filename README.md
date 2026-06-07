@@ -145,6 +145,7 @@ Password web: admin123
 ## Funcionalidades
 
 - Login contra tabla `USUARIOS`.
+- Registro y listado de categorias.
 - CRUD completo de `EQUIPOS`.
 - Registro y listado de personas.
 - Registro de prestamos.
@@ -159,12 +160,13 @@ Password web: admin123
 1. El usuario abre `http://localhost:3000`.
 2. Inicia sesion con un usuario existente en la tabla `USUARIOS`.
 3. El sistema carga categorias, equipos, personas, prestamos, reportes y graficos desde Oracle.
-4. En el modulo `Equipos` se puede crear, editar, eliminar, listar y filtrar equipos.
-5. En el modulo `Personas` se registran solicitantes de prestamos.
-6. En el modulo `Prestamos` se registra el prestamo de un equipo disponible.
-7. Al prestar un equipo, el backend cambia su estado a `PRESTADO`.
-8. Al devolver un equipo, el backend cambia su estado a `DISPONIBLE`.
-9. Los reportes y graficos muestran informacion real obtenida desde Oracle.
+4. En el modulo `Categorias` se registran categorias para clasificar equipos.
+5. En el modulo `Equipos` se puede crear, editar, eliminar, listar y filtrar equipos.
+6. En el modulo `Personas` se registran solicitantes de prestamos.
+7. En el modulo `Prestamos` se registra el prestamo de un equipo disponible.
+8. Al prestar un equipo, el backend cambia su estado a `PRESTADO`.
+9. Al devolver un equipo, el backend cambia su estado a `DISPONIBLE`.
+10. Los reportes y graficos muestran informacion real obtenida desde Oracle.
 
 ## Cumplimiento Del Enunciado
 
@@ -236,6 +238,8 @@ Gestion_Equipos/
 ## Endpoints principales
 
 - `POST /api/login`
+- `GET /api/categorias`
+- `POST /api/categorias`
 - `GET /api/equipos`
 - `POST /api/equipos`
 - `PUT /api/equipos/:id`

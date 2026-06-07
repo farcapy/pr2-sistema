@@ -62,6 +62,7 @@
     <!-- Navegacion por pestanas de los modulos del sistema. -->
     <nav class="tabs" aria-label="Secciones">
       <button class="tab active" data-tab="equipos">Equipos</button>
+      <button class="tab" data-tab="categorias">Categorias</button>
       <button class="tab" data-tab="personas">Personas</button>
       <button class="tab" data-tab="prestamos">Prestamos</button>
       <button class="tab" data-tab="reportes">Reportes</button>
@@ -125,6 +126,34 @@
                 </tr>
               </thead>
               <tbody id="equiposBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Modulo Categorias: permite crear categorias para clasificar equipos. -->
+    <section id="categorias" class="tab-panel">
+      <div class="grid two">
+        <!-- Formulario para registrar categorias. -->
+        <form id="categoriaForm" class="panel form">
+          <h2>Categoria</h2>
+          <label>Nombre
+            <input type="text" name="nombre_categoria" required maxlength="80">
+          </label>
+          <label>Descripcion
+            <textarea name="descripcion" maxlength="200" rows="3"></textarea>
+          </label>
+          <button type="submit">Guardar categoria</button>
+        </form>
+
+        <!-- Listado de categorias disponibles. -->
+        <section class="panel">
+          <h2>Categorias registradas</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Categoria</th><th>Descripcion</th></tr></thead>
+              <tbody id="categoriasBody"></tbody>
             </table>
           </div>
         </section>

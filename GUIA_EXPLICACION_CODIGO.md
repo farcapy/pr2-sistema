@@ -46,7 +46,7 @@ Archivo generado automaticamente por npm. Fija las versiones exactas de dependen
 2. `src/app.js` configura Express, middlewares, archivos estaticos y rutas.
 3. `src/config/database.js` crea el pool de conexiones Oracle en modo Thin.
 4. `src/middlewares/validate.js` valida campos obligatorios.
-5. `src/routes/*.js` contiene los endpoints REST.
+5. `src/routes/*.js` contiene los endpoints REST, incluido el alta de categorias.
 
 ## Como Explicar El Frontend
 
@@ -66,6 +66,7 @@ Archivo generado automaticamente por npm. Fija las versiones exactas de dependen
 
 - El login consulta realmente la tabla `USUARIOS`.
 - El CRUD principal es `EQUIPOS`.
+- Las categorias se crean desde la interfaz y alimentan el select de equipos.
 - Los prestamos usan transacciones para actualizar `PRESTAMOS` y `EQUIPOS` juntos.
 - `FOR UPDATE` bloquea el equipo o prestamo durante operaciones criticas.
 - Los reportes y graficos no usan datos simulados: consultan Oracle.

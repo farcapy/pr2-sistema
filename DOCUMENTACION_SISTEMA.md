@@ -13,11 +13,12 @@ El sistema permite registrar, controlar y consultar prestamos y devoluciones de 
 1. El usuario ingresa al sistema desde `http://localhost:3000`.
 2. Inicia sesion con un usuario registrado en la tabla `USUARIOS`.
 3. Luego puede administrar equipos tecnologicos desde el modulo principal.
-4. Tambien puede registrar personas que solicitan prestamos.
-5. Para registrar un prestamo, selecciona un equipo disponible, una persona y una fecha estimada de devolucion.
-6. Al registrar el prestamo, el backend cambia automaticamente el estado del equipo a `PRESTADO`.
-7. Al registrar una devolucion, el backend cambia automaticamente el estado del equipo a `DISPONIBLE`.
-8. Los reportes y graficos consultan datos reales guardados en Oracle.
+4. Puede registrar categorias para clasificar equipos.
+5. Tambien puede registrar personas que solicitan prestamos.
+6. Para registrar un prestamo, selecciona un equipo disponible, una persona y una fecha estimada de devolucion.
+7. Al registrar el prestamo, el backend cambia automaticamente el estado del equipo a `PRESTADO`.
+8. Al registrar una devolucion, el backend cambia automaticamente el estado del equipo a `DISPONIBLE`.
+9. Los reportes y graficos consultan datos reales guardados en Oracle.
 
 ## Usuario De Prueba
 
@@ -90,12 +91,13 @@ POST /api/personas
 
 ### Categorias
 
-Lista categorias de equipos.
+Permite registrar y listar categorias de equipos.
 
-Endpoint:
+Endpoints:
 
 ```text
 GET /api/categorias
+POST /api/categorias
 ```
 
 ### Prestamos
@@ -177,6 +179,7 @@ GET /api/graficos/equipos-categoria
 | Alcance solicitado | Cumple | Donde se implementa |
 | --- | --- | --- |
 | Iniciar sesion | Si | Login inicial y `/api/login` |
+| Registrar categorias de equipos | Si | Modulo `Categorias` |
 | Registrar equipos tecnologicos | Si | Formulario de equipos |
 | Editar equipos | Si | Boton `Editar` en tabla de equipos |
 | Eliminar equipos | Si | Boton `Eliminar` en tabla de equipos |
