@@ -63,6 +63,8 @@ sqlplus gestion_equipos/gestion123@localhost:1521/XEPDB1
 @sql/02_schema.sql
 ```
 
+Los datos de prueba incluyen varias categorias, equipos, personas, prestamos historicos devueltos, prestamos activos vigentes y prestamos activos vencidos para que reportes y graficos tengan informacion visible desde el primer arranque.
+
 7. Ejecutar el proyecto:
 
 ```bash

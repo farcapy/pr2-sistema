@@ -31,3 +31,15 @@ sqlplus gestion_equipos/gestion123@localhost:1521/XEPDB1
 ```
 
 El script `schema.sql` elimina y vuelve a crear las tablas del sistema. Sirve para preparar una demo limpia.
+
+Los datos de prueba incluyen:
+
+- Usuario web `admin / admin123`.
+- Varias categorias iniciales.
+- Equipos variados en estados `DISPONIBLE`, `PRESTADO` y `MANTENIMIENTO`.
+- Personas solicitantes de distintos tipos.
+- Prestamos historicos devueltos distribuidos en varios meses.
+- Varios prestamos activos vigentes.
+- Varios prestamos activos vencidos.
+
+Esto permite que las secciones de reportes y graficos tengan informacion visible apenas se instala el proyecto.

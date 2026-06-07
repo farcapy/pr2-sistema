@@ -53,6 +53,14 @@ Relaciones:
 - `PRESTAMOS.id_equipo` referencia a `EQUIPOS.id_equipo`.
 - `PRESTAMOS.id_persona` referencia a `PERSONAS.id_persona`.
 
+Datos de prueba:
+
+- El script `sql/schema.sql` carga varias categorias, equipos, personas y prestamos de ejemplo.
+- Incluye prestamos devueltos en meses anteriores para el grafico de prestamos por mes.
+- Incluye varios prestamos activos vigentes para el reporte de activos.
+- Incluye varios prestamos activos vencidos para el reporte de vencidos.
+- Ajusta el estado de los equipos con prestamos activos a `PRESTADO`.
+
 ## Modulos Del Sistema
 
 ### Login
@@ -128,6 +136,8 @@ Reportes disponibles:
 - Prestamos vencidos.
 - Historial de prestamos por persona.
 
+Los reportes tienen datos visibles desde la instalacion inicial gracias a los prestamos historicos cargados por `schema.sql`.
+
 Endpoints:
 
 ```text
@@ -144,6 +154,8 @@ Graficos dinamicos generados con Chart.js:
 - Cantidad de equipos por estado.
 - Cantidad de prestamos por mes.
 - Cantidad de equipos por categoria.
+
+Los graficos usan datos reales de Oracle y cuentan con datos historicos de prueba para que se puedan interpretar sin cargar prestamos manualmente.
 
 Endpoints:
 
