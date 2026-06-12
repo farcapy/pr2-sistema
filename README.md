@@ -201,6 +201,12 @@ La guia para explicar el codigo durante la defensa esta en:
 GUIA_EXPLICACION_CODIGO.md
 ```
 
+El DER de la base de datos esta en:
+
+```text
+DER_BASE_DATOS.md
+```
+
 ## Estructura
 
 ```text
@@ -218,6 +224,7 @@ Gestion_Equipos/
     README_SQL.md
     schema.sql
   DOCUMENTACION_SISTEMA.md
+  DER_BASE_DATOS.md
   GUIA_EXPLICACION_CODIGO.md
   MIGRACION.md
   src/

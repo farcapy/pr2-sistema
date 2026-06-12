@@ -40,7 +40,7 @@ Plantilla de configuracion. Se copia a `.env` en cada computadora.
 
 Archivo generado automaticamente por npm. Fija las versiones exactas de dependencias para que el proyecto se instale igual en otra computadora.
 
-## Como Explicar El Backend
+## El Backend
 
 1. `src/server.js` inicia el servidor.
 2. `src/app.js` configura Express, middlewares, archivos estaticos y rutas.
@@ -48,13 +48,13 @@ Archivo generado automaticamente por npm. Fija las versiones exactas de dependen
 4. `src/middlewares/validate.js` valida campos obligatorios.
 5. `src/routes/*.js` contiene los endpoints REST, incluido el alta de categorias.
 
-## Como Explicar El Frontend
+## El Frontend
 
 1. `public/index.html` contiene la estructura visual de login, modulos, tablas y formularios.
 2. `public/css/styles.css` define colores, layout responsive, tablas, botones y estados.
 3. `public/js/app.js` consume la API con `fetch()`, renderiza tablas, maneja formularios y dibuja graficos con Chart.js.
 
-## Como Explicar Oracle
+## Oracle
 
 1. `sql/01_create_user.sql` prepara el usuario Oracle.
 2. `sql/02_schema.sql` ejecuta el esquema completo.
@@ -62,7 +62,7 @@ Archivo generado automaticamente por npm. Fija las versiones exactas de dependen
 4. Las relaciones se implementan con claves foraneas.
 5. Los ids se generan automaticamente con secuencias y triggers.
 
-## Puntos Clave Para Defender
+## Puntos Clave
 
 - El login consulta realmente la tabla `USUARIOS`.
 - El CRUD principal es `EQUIPOS`.
